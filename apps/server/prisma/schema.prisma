@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma" // 自定义生成位置
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique @db.VarChar(255)
+  username   String   @unique @db.VarChar(100)
+  avatarUrl  String?  @map("avatar_url")
+  bio        String?   @db.Text
+  isActive   Boolean  @default(true) @map("is_actived")
+  isVerified Boolean  @default(false) @map("is_verified")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Board {
+  id String @id @default(uuid())
+}
