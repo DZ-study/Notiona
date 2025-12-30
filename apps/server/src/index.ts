@@ -1,10 +1,13 @@
 import 'dotenv/config'
 import express from 'express'
 import prisma from './config/prisma'
+import bodyParser from 'body-parser'
 import { registerRoutes } from './routes'
 
 
 const app = express()
+
+app.use(bodyParser.json())
 
 // 注册路由
 registerRoutes(app)
