@@ -1,4 +1,4 @@
-import prisma from '@/config/prisma'
+import prisma from '@/lib/prisma'
 import type { Prisma } from "@/generated/prisma/client";
 
 export function createUser(data: Prisma.UserCreateInput) {
