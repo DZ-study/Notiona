@@ -12,7 +12,7 @@ export async function login(email: string, password: string) {
     });
   }
 
-  if (!bcrypt.compare(password, user.passwordHash)) {
+  if (!bcrypt.compare(password, user.password)) {
     throw new AppError("登录失败", {
       statusCode: 401,
       code: 'UNAUTHORIZED'

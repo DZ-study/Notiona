@@ -13,10 +13,6 @@ app.use(bodyParser.json())
 // 注册路由
 registerRoutes(app)
 
-app.use(async(req, res, next) => {
-  throw new Error('boom')
-})
-
 app.get('/health', (_req, res) => {
   res.json({
     ok: true
